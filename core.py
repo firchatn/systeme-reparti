@@ -6,7 +6,7 @@ import random
 passToSave = ''
 
 """
-    Class Handler events : Lisente event 
+    Class Handler events
     button of app
 """
 
@@ -14,8 +14,17 @@ class Handler:
     def onDeleteWindow(self, *args):
         Gtk.main_quit(*args)
 
-    def login(self, butgenerator):
-        pass
+    def login(self, login):
+        print("login button clicked")
+        
+        
+    def clear(self, clear):
+        print("clear button clicked")
+        
+    def createUser(self, create):
+        print("creating new account")
+
+
 
 builder = Gtk.Builder()
 builder.add_from_file("Layout.glade")
@@ -23,7 +32,8 @@ builder.connect_signals(Handler())
 
 window = builder.get_object("window1")
 window.connect("delete-event", Gtk.main_quit)
-window.set_default_size(600, 500)
+window.set_default_size(600, 200)
+inputuser = builder.get_object("entry1")
 window.show_all()
 
 
