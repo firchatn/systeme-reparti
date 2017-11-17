@@ -2,6 +2,8 @@
 <interface>
   <requires lib="gtk+" version="2.24"/>
   <!-- interface-naming-policy project-wide -->
+  <object class="GtkEntryBuffer" id="entrybuffer1"/>
+  <object class="GtkEntryBuffer" id="entrybuffer2"/>
   <object class="GtkWindow" id="window1">
     <property name="can_focus">False</property>
     <child>
@@ -18,6 +20,11 @@
                 <property name="can_focus">False</property>
                 <property name="xalign">0.46000000834465027</property>
                 <property name="label" translatable="yes">Username : </property>
+                <attributes>
+                  <attribute name="style" value="italic"/>
+                  <attribute name="foreground" value="#38383e3ebfbf"/>
+                  <attribute name="underline-color" value="#ffffffffffff"/>
+                </attributes>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -57,6 +64,10 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Password : </property>
+                <attributes>
+                  <attribute name="style" value="italic"/>
+                  <attribute name="foreground" value="#38383e3ebfbf"/>
+                </attributes>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -131,7 +142,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="create">
+              <object class="GtkButton" id="button3">
                 <property name="label" translatable="yes">Create Account</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -165,6 +176,17 @@
             <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label3">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
           </packing>
         </child>
       </object>

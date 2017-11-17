@@ -16,6 +16,8 @@ class Handler:
 
     def login(self, login):
         print("login button clicked")
+        feedback.set_text("Invalid Username or Password!")
+        
         
         
     def clear(self, clear):
@@ -31,8 +33,10 @@ builder.connect_signals(Handler())
 
 window = builder.get_object("window1")
 window.connect("delete-event", Gtk.main_quit)
-window.set_default_size(600, 200)
+window.set_default_size(600, 250)
 inputuser = builder.get_object("entry1")
+inputpass = builder.get_object("entry2")
+feedback = builder.get_object("label3")
 window.show_all()
 
 
