@@ -22,6 +22,7 @@ class Handler:
         
     def clear(self, clear):
         print("clear button clicked")
+        feedback.set_text("")
         
     def createUser(self, create):
         print("creating new account")
