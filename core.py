@@ -25,7 +25,6 @@ class Handler:
         print("creating new account")
 
 
-
 builder = Gtk.Builder()
 builder.add_from_file("Layout.glade")
 builder.connect_signals(Handler())
