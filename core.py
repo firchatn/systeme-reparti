@@ -30,6 +30,7 @@ class Handler:
 
             window = builder.get_object("window1")
             window.connect("delete-event", Gtk.main_quit)
+            window.set_default_size(900, 750)
             window.show_all()
             Gtk.main()
             
