@@ -19,7 +19,7 @@ class Handler:
         password = inputpass.get_text()
         print(user)
         print(password)
-        if user != "ali" and password != "pass" :
+        if user != "ali" or password != "pass" :
             feedback.set_text("Invalid Username or Password!")
         else:
             """
