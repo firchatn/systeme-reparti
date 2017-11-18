@@ -15,13 +15,14 @@ class Handler:
 
     def login(self, login):
         print("login button clicked")
-        if 1 == 2 : 
-            feedback.set_text("Invalid Username or Password!")
+        
         user = inputuser.get_text()
         password = inputpass.get_text()
         print(user)
         print(password)
-        if 1 == 1:
+        if user != "ali" and password != "pass" :
+            feedback.set_text("Invalid Username or Password!")
+        else:
             Gtk.main_quit()
             builder = Gtk.Builder()
             builder.add_from_file("Layout2.glade")
