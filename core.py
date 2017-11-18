@@ -1,8 +1,7 @@
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
- 
-passToSave = ''
+from acces import acces
 
 """
     Class Handler events
@@ -23,16 +22,22 @@ class Handler:
         if user != "ali" and password != "pass" :
             feedback.set_text("Invalid Username or Password!")
         else:
+            """
             Gtk.main_quit()
             builder = Gtk.Builder()
             builder.add_from_file("Layout2.glade")
             builder.connect_signals(Handler())
-
             window = builder.get_object("window1")
             window.connect("delete-event", Gtk.main_quit)
+            #To change to full screen
             window.set_default_size(900, 750)
             window.show_all()
             Gtk.main()
+            """
+            ac = acces()
+            ac.load_interface()
+            Gtk.main_quit()
+            
             
         
         
