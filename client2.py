@@ -7,9 +7,7 @@ print("Connection with Server on  port{}".format(port))
 msg = b""
 while msg != b"end":
     msg = input("> ")
-# Peut planter si vous tapez des caractères spéciaux
     msg = msg.encode()
-# On envoie le message
     server_connection.send(msg)
     data = server_connection.recv(1024)
     print(data.decode()) 

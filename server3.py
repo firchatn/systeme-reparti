@@ -33,7 +33,7 @@ while server_on:
             msg = msg.decode()
             print("Get {}".format(msg))
             customer.send(b"5 / 5")
-            if msg == "end":
+            if msg == "end" :
                 server_on = False
 print("Close connection")
 for customer in customer_conx:
