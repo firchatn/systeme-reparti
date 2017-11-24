@@ -1,18 +1,17 @@
 import socket
 hote = "localhost"
 port = 12800
-connexion_avec_serveur = socket.socket(socket.AF_INET,
-socket.SOCK_STREAM)
-connexion_avec_serveur.connect((hote, port))
-print("Connexion établie avec le serveur sur le port{}".format(port))
-msg_a_envoyer = b""
-while msg_a_envoyer != b"fin":
-    msg_a_envoyer = input("> ")
+server_connection = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+server_connection.connect((hote, port))
+print("Connection with Server on  port{}".format(port))
+msg = b""
+while msg != b"end":
+    msg = input("> ")
 # Peut planter si vous tapez des caractères spéciaux
-    msg_a_envoyer = msg_a_envoyer.encode()
+    msg = msg.encode()
 # On envoie le message
-    connexion_avec_serveur.send(msg_a_envoyer)
-    msg_recu = connexion_avec_serveur.recv(1024)
-    print(msg_recu.decode()) 
-print("Fermeture de la connexion")
-connexion_avec_serveur.close()
+    server_connection.send(msg)
+    data = server_connection.recv(1024)
+    print(data.decode()) 
+print("Close Connection")
+server_connection.close()

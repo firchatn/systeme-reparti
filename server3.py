@@ -3,40 +3,39 @@ import select
 
 hote = ''
 port = 12800
-connexion_principale = socket.socket(socket.AF_INET,
-socket.SOCK_STREAM)
-connexion_principale.bind((hote, port))
-connexion_principale.listen(5)
-print("Le serveur écoute à présent sur le port {}".format(port))
-serveur_lance = True
-clients_connectes = []
+server_conx = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+server_conx.bind((hote, port))
+server_conx.listen(5)
+print("Server open on port {}".format(port))
+server_on = True
+customer_conx = []
 
-while serveur_lance:
+while server_on:
 
 
-    connexions_demandees, wlist, xlist = select.select([connexion_principale],[], [], 0.05)
-    for connexion in connexions_demandees:
-        connexion_avec_client, infos_connexion = connexion.accept()
+    request_con, wlist, xlist = select.select([server_conx],[], [], 0.05)
+    for connexion in request_con:
+        customer_link, infos_connexion = connexion.accept()
 
-        clients_connectes.append(connexion_avec_client)
+        customer_conx.append(customer_link)
 
-    clients_a_lire = []
+    customers_data = []
     try:
-        clients_a_lire, wlist, xlist = select.select(clients_connectes,[], [], 0.05)
+        customers_data, wlist, xlist = select.select(customer_conx,[], [], 0.05)
     except select.error:
         pass
     else:
 
-        for client in clients_a_lire:
+        for customer in customers_data:
 
-            msg_recu = client.recv(1024)
+            msg = customer.recv(1024)
 
-            msg_recu = msg_recu.decode()
-            print("Reçu {}".format(msg_recu))
-            client.send(b"5 / 5")
-            if msg_recu == "fin":
-                serveur_lance = False
-print("Fermeture des connexions")
-for client in clients_connectes:
-    client.close()
-connexion_principale.close()
+            msg = msg.decode()
+            print("Get {}".format(msg))
+            customer.send(b"5 / 5")
+            if msg == "end":
+                server_on = False
+print("Close connection")
+for customer in customer_conx:
+    customer.close()
+server_conx.close()
